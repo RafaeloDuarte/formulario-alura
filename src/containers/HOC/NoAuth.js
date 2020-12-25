@@ -8,12 +8,13 @@ const noAuth = Component => props =>{
   const auth = useSelector(state => state.authorized)
   const history = useHistory()
   const dispatch = useDispatch()
+  getUser(dispatch)
   
   useEffect(() => {
-    getUser(dispatch)
     if (auth)
       history.push("/")
-  })
+  }, [auth, history])
+
   return (
     <>
       <Component />

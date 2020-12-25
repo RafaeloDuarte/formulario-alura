@@ -6,17 +6,15 @@ import { getUser } from '../../api/loginApi'
 const base = Component => props => {
 
   const auth = useSelector(state => state.authorized)
-  const user = useSelector(state => state.user)
-
   const history = useHistory()
   const dispatch = useDispatch()
-  
-  useEffect(() => {
-    const u = getUser(dispatch)
+  getUser(dispatch)
 
-    if (!auth && user.token !== u.token)
+  useEffect(() => {
+
+    if (!auth)
       history.push("/login")
-  })
+  }, [auth, history])
 
   return (
     <>
