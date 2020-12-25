@@ -3,7 +3,7 @@ import { api, version } from '../config'
 import { saveToken, getHeaders, cleanToken } from "./localStorage"
 import errorHandling from './errorHandling'
 import axios from "axios"
-import { toggleAuth } from "../store/actions/auth";
+import { toggleAuth, logoutAuth } from "../store/actions/auth";
 
 export const handleLogin = ({ email, password, dispatch }) => {
     let usuario = {}
@@ -16,14 +16,14 @@ export const handleLogin = ({ email, password, dispatch }) => {
         .catch((response) => errorHandling(response))
 }
 
-export const getUser = () => {
+export const getUser = (dispatch) => {
     let usuario = {}
     axios.get(`${api}/${version}/api/usuarios/`, getHeaders())
         .then((response) => {
             usuario = response.data.usuario
-            saveToken(usuario)
+            dispatch(toggleAuth(true, usuario))
         })
-        .catch((error) => usuario)
+        .catch((error) => errorHandling(error))
     return usuario
 }
 

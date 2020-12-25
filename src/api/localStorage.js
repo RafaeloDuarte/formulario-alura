@@ -15,11 +15,13 @@ export const cleanToken = () => {
 }
 
 export const getToken = () => {
+    let token
     const token1 = localStorage.getItem("token1");
     const token2 = localStorage.getItem("token2");
     const token3 = localStorage.getItem("token3");
     if (!token1 || !token2 || !token3) return null;
-    return `${token1}.${token2}.${token3}`;
+    token =`${token1}.${token2}.${token3}`
+    return token;
 }
 
 

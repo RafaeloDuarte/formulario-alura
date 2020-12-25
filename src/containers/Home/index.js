@@ -3,12 +3,13 @@ import { Button } from '@material-ui/core'
 import { handleLogout } from '../../api/loginApi'
 import { useDispatch, useSelector } from "react-redux"
 import { logoutAuth } from "../../store/actions/auth"
-
+import { useHistory } from 'react-router-dom'
 
 export default function Home() {
 
     const dispatch = useDispatch()
     const usuario = useSelector(state=>state.user)
+    const history = useHistory()
 
     return (
         <>
@@ -18,6 +19,7 @@ export default function Home() {
                 e.preventDefault()
                 handleLogout()
                 dispatch(logoutAuth())
+                history.push('/login')
             }}>
                 Logout
             </Button>
