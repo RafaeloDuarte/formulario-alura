@@ -1,6 +1,13 @@
-export function toggleAuth(auth) {
+export function toggleAuth(auth, user) {
     return {
         type: 'TOGGLE_AUTH',
-        auth
+        auth,
+        user
+    }
+}
+
+export function logoutAuth() {
+    return {
+        type: 'LOGOUT_AUTH'
     }
 }

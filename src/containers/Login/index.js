@@ -6,12 +6,11 @@ import Input from "../../components/Input"
 import SwitchComponent from "../../components/Switch"
 import { Container, Button } from '@material-ui/core'
 import Header from '../../components/Fomulario/Header'
-import { toggleAuth as authAction } from "../../store/actions/auth";
 import { handleLogin } from "../../api/loginApi";
 
 export default function Login() {
 
-  const [nome, setNome] = useState('John')
+  const [nome, setNome] = useState('')
   const [senha, setSenha] = useState('')
   const [promocoes, setPromocoes] = useState(true)
   const [erros, setErros] = useState(
@@ -38,8 +37,7 @@ export default function Login() {
       <Header text='Login' color='blue' />
       <form onSubmit={e => {
         e.preventDefault()
-        handleLogin({ nome, senha, history })
-        dispatch(authAction(true))
+        handleLogin({ email:nome, password: senha, history, dispatch })
       }}>
         <Input
           id='login'

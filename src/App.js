@@ -17,6 +17,7 @@ function App() {
           <Switch>
             <Route path='/' exact={true} component={base(Home)} />
             <Route path='/produto' exact={true} component={base(Produto)} />
+            
             <Route path='/login' component={noAuth(Login)} />
             <Route path='/cadastro' component={noAuth(Cadastro)} />
           </Switch>
