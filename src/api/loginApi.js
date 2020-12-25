@@ -3,7 +3,7 @@ import { api, version } from '../config'
 import { saveToken, getHeaders, cleanToken } from "./localStorage"
 import errorHandling from './errorHandling'
 import axios from "axios"
-import { toggleAuth, logoutAuth } from "../store/actions/auth";
+import { toggleAuth } from "../store/actions/auth";
 
 export const handleLogin = ({ email, password, dispatch }) => {
     let usuario = {}

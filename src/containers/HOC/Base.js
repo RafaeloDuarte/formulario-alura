@@ -16,7 +16,7 @@ const base = Component => props => {
 
     if (!auth && user.token !== u.token)
       history.push("/login")
-  },[])
+  })
 
   return (
     <>
